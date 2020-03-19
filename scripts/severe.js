@@ -40,12 +40,6 @@ let dust_storms = [
     {x: Date.UTC(1995, 0, 1), y: 21}
 ];
 let land_lost = [124, 153, 176, 188, 191];
-/*
-let land_lost = [
-    {x: Date.UTC(1955, 0, 1), y: 1.53},
-    {x: Date.UTC(1985, 0, 1), y: 1.76},
-    {x: Date.UTC(1992, 0, 1), y: 1.88},
-    {x: Date.UTC(2002, 0, 1), y: 1.91}];*/
 let desertification = [156, 183, 210, 228, 246];
 let coal_usage = [
     {x: Date.UTC(1974), y: 401.44},
@@ -339,12 +333,16 @@ function draw_coal_trend() {
                     fontSize: "20pt"
                 }
             },
-            plotLine: [{
-                value: 2,
+            plotLines: [{
+                value: Date.UTC(1979),
                 color: "#f2033e",
                 width: 2,
                 label: {
-                    text: "Reform and Open Started"
+                    text: "Reform and Open Started",
+                    x: 400,
+                    style: {
+                        fontSize: "10pt"
+                    }
                 },
                 zIndex: 4
             }]

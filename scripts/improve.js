@@ -62,6 +62,13 @@ let forest_created = [
     {x: Date.UTC(2018, 0, 1), y: 80.5},
     {x: Date.UTC(2019, 0, 1), y: 88.3}
 ];
+let forest_cov = [
+    {x: Date.UTC(2006), y: 9.42},
+    {x: Date.UTC(2009), y: 10.21},
+    {x: Date.UTC(2012), y: 11.4},
+    {x: Date.UTC(2015), y: 12.9},
+    {x: Date.UTC(2018), y: 13.57}
+];
 let coal = [
     {x: Date.UTC(2002), y: 66.3},
     {x: Date.UTC(2003), y: 68.4},
@@ -315,6 +322,8 @@ function draw_api_pie(i) {
 function draw_three_north_map() {
     Highcharts.Map("threeNorthIntro", {
         chart: {
+            width: "900",
+            height: "600",
             map: "cn/china"
         },
 
@@ -393,11 +402,12 @@ function draw_three_north_map() {
 function draw_three_north_acc() {
     Highcharts.chart("threeNorthAccom", {
         chart: {
-            type: "column"
+            width: "900",
+            height: "600"
         },
 
         title: {
-            text: "The Three-North Project Has Been Creating Forests",
+            text: "The Three-North Project Has Been Successful",
             style: {
                 fontSize: "20pt",
                 fontWeight: "bold"
@@ -406,7 +416,7 @@ function draw_three_north_acc() {
         },
 
         subtitle: {
-            text: "Forest Area Created by the Three-North Project each year",
+            text: "Forest Area Created by the Three-North Project and forest coverage of the region",
             style: {
                 fontSize: "15pt"
             },
@@ -424,27 +434,50 @@ function draw_three_north_acc() {
             }
         },
 
-        yAxis: {
-            title: {
-                text: "Area of Forests Created(hectare)",
-                style: {
-                    fontSize: "20pt"
+        yAxis: [
+            {
+                title: {
+                    text: "Area of Forests Created(hectare)",
+                    style: {
+                        fontSize: "15pt"
+                    }
                 }
+            },
+            {
+                title: {
+                    text: "Forest Coverage of the three-north region(%)",
+                    style: {
+                        fontSize: "15pt"
+                    }
+                },
+                opposite: true
             }
-        },
+        ],
         
         legend: {
+            layout: "vertical",
             align: "right",
             verticalAlign: "top",
             floating: true,
             borderWidth: 1
         },
 
-        series: [{
-            name: "Forest Area Created",
-            data: forest_created,
-            color: "green"
-        }],
+        series: [
+            {   
+                type: "column",
+                name: "Forest Area Created",
+                data: forest_created,
+                color: "green",
+                yAxis: 0
+            },
+            {   
+                type: "line",
+                name: "Forest Coverage",
+                data: forest_cov,
+                color: "#8ef7b4",
+                yAxis: 1
+            }
+        ],
 
         credits: {
             text: "Source: The Three-North Bureau",
