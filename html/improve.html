@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="../scripts/improve.js"></script>
+        <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+        <script src="https://data.jianshukeji.com/geochina/china.js"></script>
+        <link href="../style/improve.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    </head>
+    <header> 
+        <h2>The Measures taken to Improve Air Quality in Northern China</h2>
+    </header>
+    <hr>
+    <body>
+        <section id="graphs">
+            <div id="threeNorthIntro" style="height: 600px; width: 900px"></div>
+            <hr>
+            <div id="threeNorthAccom" style="height: 600px; width: 900px"></div>
+            <hr>
+            <div id="energyCombination" style="height: 600px; width: 900px"></div>
+            <hr>
+            <section id="charts">
+                <section id="airQuality">
+                    <section id="apiBar"></section>
+                    <section id="apiPie"></section>
+                </section>
+                <section>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(6)'>2019/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(5)'>2018/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(4)'>2017/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(3)'>2016/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(2)'>2015/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(1);'>2014/12</button>
+                    <button id="nextPie" class="pure-button" onClick='draw_api_pie(0)'>2013/12</button>
+                </section>
+            </section>
+    </body>
+</html>
