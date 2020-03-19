@@ -19,7 +19,7 @@
 #charts {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 80% 20%;
     overflow: visible;
 }
 
@@ -44,9 +44,16 @@
     overflow: visible;
 }
 
+#buttons {
+    grid-column: 1;
+    grid-row: 2;
+}
+
 #nextPie {
     float: right;
-    background-color: "#808786"
+    background-color: "#808786";
+    position: relative;
+    bottom: -100px;
 }
 
 #nextPie:hover {
