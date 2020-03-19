@@ -39,12 +39,14 @@ let dust_storms = [
     {x: Date.UTC(1985, 0, 1), y: 14}, 
     {x: Date.UTC(1995, 0, 1), y: 21}
 ];
+let land_lost = [124, 153, 176, 188, 191];
+/*
 let land_lost = [
     {x: Date.UTC(1955, 0, 1), y: 1.53},
     {x: Date.UTC(1985, 0, 1), y: 1.76},
     {x: Date.UTC(1992, 0, 1), y: 1.88},
-    {x: Date.UTC(2002, 0, 1), y: 1.91}];
-let desertification = [1560, 1830, 2100, 2280, 2460];
+    {x: Date.UTC(2002, 0, 1), y: 1.91}];*/
+let desertification = [156, 183, 210, 228, 246];
 let coal_usage = [
     {x: Date.UTC(1974), y: 401.44},
     {x: Date.UTC(1975), y: 454.25},
@@ -135,7 +137,6 @@ function draw_forest_rank() {
 function draw_desertification() {
     Highcharts.chart("desertification", {
         chart: {
-            type: "line",
             width: "900",
             height: "600"
         },
@@ -156,24 +157,30 @@ function draw_desertification() {
             }
         },
 
-        yAxis: {
-            label: {
-                fomatter: "{value}km2",
-                style: {
-                    color: "black"
+        yAxis: [
+            {
+                title: {
+                    text: "Desertification Area(Thousand km2)",
+                    style: {
+                        color: "black",
+                        fontSize: "15pt"
+                    }
                 }
             },
-            title: {
-                text: "Desertification Area(km2)",
-                style: {
-                    color: "black",
-                    fontSize: "20pt"
-                }
+            {
+                title: {
+                    text: "Area with Land Loss by Wind(Thousand km2)",
+                    style: {
+                        color: "#605303",
+                        fontSize: "15pt"
+                    }
+                },
+                opposite: true
             }
-        },
+        ],
 
         title: {
-            text: "The Area of Desertification was Expanding",
+            text: "The Desertification was Expanding, Causing Land Loss",
             style: {
                 fontWeight: 'bold',
                 fontSize: "20pt"
@@ -182,7 +189,7 @@ function draw_desertification() {
         },
 
         subtitle: {
-            text: "the change of desertification area of China in the second half of 20th century",
+            text: "the change of desertification area and land loss area of China in the second half of 20th century",
             align: "left",
             style: {
                 fontSize: "15pt"
@@ -206,9 +213,18 @@ function draw_desertification() {
 
         series: [
             {
+                type: "column",
+                name: "Land Lost by Wind",
+                data: land_lost,
+                yAxis: 1,
+                color: "#605303"
+            },
+            {   
+                type: "line",
                 name: "Desertification Area",
                 data: desertification,
-                color: "black"
+                color: "black",
+                yAxis: 0
             }
         ]
     })
@@ -216,8 +232,14 @@ function draw_desertification() {
 
 function draw_result() {
     Highcharts.chart("result", {
+        chart: {
+            type: "line",
+            width: "900",
+            height: "600"
+        },
+
         title: {
-            text: "The Desertification Caused Land Loss by Wind and Sand Storms",
+            text: "The Desertification Caused Sand Storms",
             style: {
                 fontWeight: "bold",
                 fontSize: "20pt"
@@ -244,45 +266,15 @@ function draw_result() {
             }
         },
 
-        yAxis: [
-            {
-                title: {
-                    style: {
-                        color: "#8a7705"
-                    },
-                    text: "Number of Strong Sand Storms"
-                },
-                labels: {
-                    style: {
-                        color: "#8a7705",
-                        style: {
-                            fontSize: "20pt"
-                        }
-                    },
-                },
-                opposite: true
-            },
-            {
-                label: {
-                    fomat: "{value}km2",
-                    style: {
-                        color: "#605303",
-                        style: {
+        yAxis:{
+            title: {
+                style: {
+                    color: "#8a7705",
                     fontSize: "20pt"
-                }
-                    }
                 },
-                title: {
-                    text: "Area with Land Loss by Wind(Million km2)",
-                    style: {
-                        color: "#605303",
-                        style: {
-                            fontSize: "20pt"
-                        }
-                    }
-                }
+                text: "Number of Strong Sand Storms"
             }
-        ],
+        },
 
         legend: {
             layout: 'vertical',
@@ -294,17 +286,8 @@ function draw_result() {
 
         series: [
             {
-                type: "column",
-                name: "Land Lost by Wind",
-                data: land_lost,
-                yAxis: 1,
-                color: "#605303"
-            },
-            {
-                type: "line",
                 name: "Strong Dust Storm Numbers",
                 data: dust_storms,
-                yAxis: 0,
                 color: "#8a7705"
             }
         ],
@@ -347,7 +330,7 @@ function draw_coal_trend() {
                 center: [250, 200]
             }
         },
-/*
+
         xAxis: {
             type: "datetime",
             title: {
@@ -365,7 +348,7 @@ function draw_coal_trend() {
                 },
                 zIndex: 4
             }]
-        },*/
+        },
 
         yAxis: {
             title: {
@@ -374,15 +357,7 @@ function draw_coal_trend() {
                     color: "#787869",
                     fontSize: "20pt"
                 }
-            },
-            plotLine: [{
-                value: Date.UTC(1979),
-                color: "red",
-                width: 1,
-                label: {
-                    text: "Reform and Open Started"
-                }
-            }]
+            }
         },
 
         title: {
@@ -423,44 +398,6 @@ function draw_coal_trend() {
                 data: coal_usage,
                 color: "#787869"
             }
-        ],
-
-        xAxis: {
-            type: "datetime",
-            title: {
-                text: "Year",
-                style: {
-                    fontSize: "20pt"
-                }
-            },
-            plotLine: [{
-                value: 2,
-                color: "#f2033e",
-                width: 2,
-                label: {
-                    text: "Reform and Open Started"
-                },
-                zIndex: 4
-            }]
-        },
-
-        addXAxisAverageLine: function (value) {
-            var me = this;
-            me.chart.xAxis[0].addPlotLine({
-                color: 'green',
-                width: 1,
-                dashStyle: 'longdashdot',
-                value: value
-            });
-        }
+        ]
     });
-    function addXAxisAverageLine(value) {
-        var me = this;
-        me.chart.xAxis[0].addPlotLine({
-            color: '#f2033e',
-            width: 1,
-            value: value
-        });
-    }
-    chart.addXAxisAverageLine(2);
 };

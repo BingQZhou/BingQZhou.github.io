@@ -281,7 +281,7 @@ function draw_api_pie(i) {
             {
                 name: "Good(50 < API < 100)",
                 y: good[i],
-                color: "yellow"
+                color: "#0334f2"
             },
             {
                 name: "Excellent(API < 50)",
