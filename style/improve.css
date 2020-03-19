@@ -20,6 +20,7 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 50% 50%;
+    overflow: visible;
 }
 
 #airQuality {
@@ -28,16 +29,19 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
+    overflow: visible;
 }
 
 #apiBar {
     grid-column: 1;
-    grid-row: 1
+    grid-row: 1;
+    overflow: visible;
 }
 
 #apiPie {
     grid-column: 2;
-    grid-row: 1
+    grid-row: 1;
+    overflow: visible;
 }
 
 #nextPie {
