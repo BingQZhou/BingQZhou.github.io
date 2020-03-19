@@ -45,11 +45,37 @@ let land_lost = [
     {x: Date.UTC(1992, 0, 1), y: 1.88},
     {x: Date.UTC(2002, 0, 1), y: 1.91}];
 let desertification = [1560, 1830, 2100, 2280, 2460];
+let coal_usage = [
+    {x: Date.UTC(1974), y: 401.44},
+    {x: Date.UTC(1975), y: 454.25},
+    {x: Date.UTC(1976), y: 478.31},
+    {x: Date.UTC(1977), y: 523.54},
+    {x: Date.UTC(1978), y: 571.44},
+    {x: Date.UTC(1979), y: 585.88},
+    {x: Date.UTC(1980), y: 602.75},
+    {x: Date.UTC(1981), y: 594.47},
+    {x: Date.UTC(1982), y: 620.67},
+    {x: Date.UTC(1983), y: 660.4},
+    {x: Date.UTC(1984), y: 709.04},
+    {x: Date.UTC(1985), y: 766.82},
+    {x: Date.UTC(1986), y: 808.5},
+    {x: Date.UTC(1987), y: 866.32},
+    {x: Date.UTC(1988), y: 929.97},
+    {x: Date.UTC(1989), y: 969.34},
+    {x: Date.UTC(1990), y: 987.03},
+    {x: Date.UTC(1991), y: 1037.83},
+    {x: Date.UTC(1992), y: 1091.7},
+    {x: Date.UTC(1993), y: 1159.93},
+    {x: Date.UTC(1994), y: 1227.37},
+    {x: Date.UTC(1995), y: 1311.76},
+    {x: Date.UTC(1996), y: 1389.48}
+];
 
 window.addEventListener("DOMContentLoaded", function(){
     draw_forest_rank();
     draw_desertification();
     draw_result();
+    draw_coal_trend();
 });
 
 function draw_forest_rank() {
@@ -123,21 +149,25 @@ function draw_desertification() {
         xAxis: {
             categories: ["50s", "60s", "70s", "80s", "90s"],
             title: {
-                text: "Year"
+                text: "Year",
+                style: {
+                    fontSize: "20pt"
+                }
             }
         },
 
         yAxis: {
             label: {
-                fomat: "{value}km2",
+                fomatter: "{value}km2",
                 style: {
                     color: "black"
                 }
             },
             title: {
-                text: "Desertification Area",
+                text: "Desertification Area(km2)",
                 style: {
-                    color: "black"
+                    color: "black",
+                    fontSize: "20pt"
                 }
             }
         },
@@ -187,7 +217,7 @@ function draw_desertification() {
 function draw_result() {
     Highcharts.chart("result", {
         title: {
-            text: "The Desertification Caused Sand Storms and Land Loss by Wind",
+            text: "The Desertification Caused Land Loss by Wind and Sand Storms",
             style: {
                 fontWeight: "bold",
                 fontSize: "20pt"
@@ -207,7 +237,10 @@ function draw_result() {
             type: 'datetime',
             tickInterval: 24 * 3600 * 1000 * 365,
             title: {
-                text: "Year"
+                text: "Year",
+                style: {
+                    fontSize: "20pt"
+                }
             }
         },
 
@@ -221,7 +254,10 @@ function draw_result() {
                 },
                 labels: {
                     style: {
-                        color: "#8a7705"
+                        color: "#8a7705",
+                        style: {
+                            fontSize: "20pt"
+                        }
                     },
                 },
                 opposite: true
@@ -230,13 +266,19 @@ function draw_result() {
                 label: {
                     fomat: "{value}km2",
                     style: {
-                        color: "#605303"
+                        color: "#605303",
+                        style: {
+                    fontSize: "20pt"
+                }
                     }
                 },
                 title: {
                     text: "Area with Land Loss by Wind(Million km2)",
                     style: {
-                        color: "#605303"
+                        color: "#605303",
+                        style: {
+                            fontSize: "20pt"
+                        }
                     }
                 }
             }
@@ -290,4 +332,135 @@ function draw_result() {
             }
         }
     })
-}
+};
+
+function draw_coal_trend() {
+    let chart = Highcharts.chart("coalTrend", {
+        chart: {
+            type: "bar",
+            width: "900",
+            height: "600"
+        },
+
+        plotOptions: {
+            bar: {
+                center: [250, 200]
+            }
+        },
+/*
+        xAxis: {
+            type: "datetime",
+            title: {
+                text: "Year",
+                style: {
+                    fontSize: "20pt"
+                }
+            },
+            plotLine: [{
+                value: 2,
+                color: "#f2033e",
+                width: 2,
+                label: {
+                    text: "Reform and Open Started"
+                },
+                zIndex: 4
+            }]
+        },*/
+
+        yAxis: {
+            title: {
+                text: "Coal Consumed(Milliion Tons)",
+                style: {
+                    color: "#787869",
+                    fontSize: "20pt"
+                }
+            },
+            plotLine: [{
+                value: Date.UTC(1979),
+                color: "red",
+                width: 1,
+                label: {
+                    text: "Reform and Open Started"
+                }
+            }]
+        },
+
+        title: {
+            text: "The Economic Growth was Driven by Coal",
+            style: {
+                fontWeight: 'bold',
+                fontSize: "20pt"
+            },
+            align: "left"
+        },
+
+        subtitle: {
+            text: "the amount of coal used each year in China",
+            align: "left",
+            style: {
+                fontSize: "15pt"
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: "right",
+            verticalAlign: "top",
+            borderWidth: 1
+        },
+
+        credits: {
+            text: "Source: Baidu",
+            position: {
+                align: "left",
+                x: 15
+            }
+        },
+
+        series: [
+            {
+                name: "Coal Consumed",
+                data: coal_usage,
+                color: "#787869"
+            }
+        ],
+
+        xAxis: {
+            type: "datetime",
+            title: {
+                text: "Year",
+                style: {
+                    fontSize: "20pt"
+                }
+            },
+            plotLine: [{
+                value: 2,
+                color: "#f2033e",
+                width: 2,
+                label: {
+                    text: "Reform and Open Started"
+                },
+                zIndex: 4
+            }]
+        },
+
+        addXAxisAverageLine: function (value) {
+            var me = this;
+            me.chart.xAxis[0].addPlotLine({
+                color: 'green',
+                width: 1,
+                dashStyle: 'longdashdot',
+                value: value
+            });
+        }
+    });
+    function addXAxisAverageLine(value) {
+        var me = this;
+        me.chart.xAxis[0].addPlotLine({
+            color: '#f2033e',
+            width: 1,
+            value: value
+        });
+    }
+    chart.addXAxisAverageLine(2);
+};

@@ -21,6 +21,10 @@
     margin: auto;
 }
 
+#coalTrend {
+    margin: auto;
+}
+
 /* section for the next button*/
 #next {
     float: right;

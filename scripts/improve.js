@@ -160,13 +160,19 @@ function draw_api_bar() {
         xAxis: {
             categories: years,
             title: {
-                text: "December of Every Year"
+                text: "Time",
+                style: {
+                    fontSize: "10pt"
+                }
             }
         },
 
         yAxis: {
             title: {
-                text: "Air Quality Index"
+                text: "Air Quality Index",
+                style: {
+                    fontSize: "10pt"
+                }
             }
         },
 
@@ -411,13 +417,19 @@ function draw_three_north_acc() {
             type: "datetime",
             tickInterval: 24 * 3600 * 1000 * 365,
             title: {
-                text: "Year"
+                text: "Year",
+                style: {
+                    fontSize: "20pt"
+                }
             }
         },
 
         yAxis: {
             title: {
-                text: "Area of Forests Created(hectare)"
+                text: "Area of Forests Created(hectare)",
+                style: {
+                    fontSize: "20pt"
+                }
             }
         },
         
@@ -472,12 +484,18 @@ function draw_energy_combination() {
                 text: "Year"
             },
             type: "datetime",
-            tickInterval: 24 * 3600 * 1000 * 365
+            tickInterval: 24 * 3600 * 1000 * 365,
+            style: {
+                fontSize: "20pt"
+            }
         },
 
         yAxis: {
             title: {
                 text: "Percentage"
+            },
+            style: {
+                fontSize: "20pt"
             }
         },
 
@@ -486,7 +504,7 @@ function draw_energy_combination() {
             align: "right",
             verticalAlign: "top",
             floating: true,
-            x: 100,
+            x: 0,
             borderWidth: 1
         },
 
